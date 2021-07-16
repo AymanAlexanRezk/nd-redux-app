@@ -11,7 +11,7 @@ import LeaderBoard from './LeaderBoard';
 import Score from './Score';
 import NotMatch from './NotMatch';
 // import createBrowserHistory from 'history/createBrowserHistory';
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
 
 import { connect } from 'react-redux';
 
@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   // require("history").createBrowserHistory
-  
+
   render() {
     const history = createBrowserHistory();
     // console.log('History', history);
@@ -36,7 +36,7 @@ class App extends Component {
             <Route exact path="/add" component={NewPoll} />
             <Route exact path="/leaderboard" component={LeaderBoard} />
             <Route exact path="/pollresult/:id" component={PollResult} />
-            <Route exact path="/question/:id" component={PollQuestion} />
+            <Route exact path="/questions/:id" component={PollQuestion} />
             <Route exact path="/scorecard" component={Score} />
             <Route path="*" component={NotMatch} />
           </Switch>

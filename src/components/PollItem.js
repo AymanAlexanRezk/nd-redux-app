@@ -15,7 +15,13 @@ class PollItem extends Component {
           <div className="pollItemBoxHeader">{question.authorName} asks:</div>
           <div className="pollItemControls">
             <Grid container spacing={4}>
-              <Grid item xs={4} alignItems="center" justifyContent="center" container>
+              <Grid
+                item
+                xs={4}
+                alignItems="center"
+                justifyContent="center"
+                container
+              >
                 <div>
                   <img
                     className="scoreCardImg"
@@ -61,8 +67,8 @@ function mapStateToProps({ authedUser, questions, users }, { id }) {
     authedUser,
     question: formatQuestion(question, users[question.author], authedUser),
     navURL: users[authedUser].answers[id]
-      ? `pollresult/${question.id}`
-      : `/question/${question.id}`,
+      ? `/pollresult/${question.id}`
+      : `/questions/${question.id}`,
   };
 }
 

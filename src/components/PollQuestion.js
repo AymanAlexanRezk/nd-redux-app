@@ -43,7 +43,7 @@ class PollQuestion extends Component {
     }
 
     if (this.state.toPollResult) {
-      return <Redirect to={`/pollResult/${question.id}`} />;
+      return <Redirect to={`/pollresult/${question.id}`} />;
     }
 
     return (

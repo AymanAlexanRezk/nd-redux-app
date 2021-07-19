@@ -41,6 +41,7 @@ class Nav extends Component {
     e.preventDefault();
     this.props.dispatch(setAuthedUser(null));
   };
+
   render() {
     const { classes, loggedInUser } = this.props;
     return (

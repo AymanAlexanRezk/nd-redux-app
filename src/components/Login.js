@@ -27,7 +27,7 @@ class Login extends Component {
     const { userId } = this.state;
     this.props.dispatch(setAuthedUser(userId));
     this.setState({
-      userId: '',
+      userId,
       toHome: true,
     });
   };
@@ -90,11 +90,12 @@ class Login extends Component {
 
 const img = 'http://localhost:3000/images/home.jpg';
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ authedUser, questions, users, userId }) {
   return {
     authedUser,
     userIds: Object.keys(users),
-    users: users,
+    users,
+    userId,
   };
 }
 

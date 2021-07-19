@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import Home from './Home';
 import Nav from './Nav';
@@ -10,38 +10,29 @@ import PollResult from './PollResult';
 import LeaderBoard from './LeaderBoard';
 import Score from './Score';
 import NotMatch from './NotMatch';
-// import createBrowserHistory from 'history/createBrowserHistory';
-import { createBrowserHistory } from 'history';
-
 import { connect } from 'react-redux';
-
 class App extends Component {
   componentDidMount() {
     this.props.initializeData();
   }
 
-  // require("history").createBrowserHistory
-
   render() {
-    const history = createBrowserHistory();
-    // console.log('History', history);
     return (
-      <Router history={history}>
-        <div>
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/add" component={NewPoll} />
-            <Route exact path="/leaderboard" component={LeaderBoard} />
-            <Route exact path="/pollresult/:id" component={PollResult} />
-            <Route exact path="/questions/:id" component={PollQuestion} />
-            <Route exact path="/scorecard" component={Score} />
-            <Route path="*" component={NotMatch} />
-          </Switch>
-        </div>
-      </Router>
+      <Fragment>
+        <Nav />
+        <Switch>
+          <Route path="/pollresult/:id" component={PollResult} />
+          <Route path="/questions/:id" component={PollQuestion} />
+          <Route path="/login" component={Login} />
+          <Route path="/home" component={Home} />
+          <Route path="/add" component={NewPoll} />
+          <Route path="/leaderboard" component={LeaderBoard} />
+          <Route path="/scorecard" component={Score} />
+          <Route path="/no-match" component={NotMatch} />
+          <Route path="/" exact component={Home} />
+          <Redirect to="/no-match" />
+        </Switch>
+      </Fragment>
     );
   }
 }

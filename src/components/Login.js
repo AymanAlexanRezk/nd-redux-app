@@ -35,6 +35,7 @@ class Login extends Component {
   render() {
     const { userIds, users } = this.props;
 
+    //! if (this.userId){}
     if (this.state.toHome) {
       return <Redirect to="/home" />;
     }

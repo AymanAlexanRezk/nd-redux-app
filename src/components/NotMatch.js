@@ -23,7 +23,7 @@ class NotMatch extends Component {
               component={Link}
               to={'/home'}
             >
-              GoTo Home Page
+              Home
             </Button>
           </Paper>
         </div>

@@ -13,10 +13,21 @@ import NotMatch from './NotMatch';
 import { connect } from 'react-redux';
 class App extends Component {
   componentDidMount() {
-    this.props.initializeData();
+    const { handleInitialData } = this.props;
+    handleInitialData();
   }
 
   render() {
+    const { authedUser } = this.props;
+
+    if (!authedUser) {
+      return (
+        <Switch>
+          <Route path="/" component={Login} />
+        </Switch>
+      );
+    }
+
     return (
       <Fragment>
         <Nav />
@@ -29,7 +40,7 @@ class App extends Component {
           <Route path="/leaderboard" component={LeaderBoard} />
           <Route path="/scorecard" component={Score} />
           <Route path="/no-match" component={NotMatch} />
-          <Route path="/" exact component={Home} />
+          <Route exact path="/" component={Home} />
           <Redirect to="/no-match" />
         </Switch>
       </Fragment>
@@ -37,12 +48,9 @@ class App extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    initializeData: () => {
-      dispatch(handleInitialData());
-    },
-  };
-}
+const mapStateToProps = (state) => {
+  const { authedUser } = state;
+  return { authedUser };
+};
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, { handleInitialData })(App);
